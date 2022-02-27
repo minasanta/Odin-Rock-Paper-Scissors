@@ -9,36 +9,105 @@ function computerPlay(){
 function playRound(playerSelection, computerSelection) {
     if(String(playerSelection).toUpperCase() === 'ROCK'){
         if(String(computerSelection) === 'Paper')
-            return 'You lose, Paper beats rock';
+            return 'c';
         else if(String(computerSelection) === 'Scissors')
-            return 'You won, rock beats scissors';
-        else
-            return 'No one won';
+            return 'p';
     }
     else if (String(playerSelection).toUpperCase() === 'PAPER'){
         if(String(computerSelection) === 'Paper')
-            return 'No one won';
+            return;
         else if(String(computerSelection) === 'Scissors')
-            return 'You lose, scissors beats paper';
+            return 'c';
         else
-            return 'You won, paper beats rock';
+            return 'p';
     }
     else {
         if(String(computerSelection) === 'Paper')
-            return 'You won, scissors beats paper';
+            return 'p';
         else if(String(computerSelection) === 'Scissors')
-            return 'No one won';
+            return;
         else
-            return 'You lose, rock beats scissors';
+            return 'c';
     }
   }
-
-function game () {
-    for(let i=0;i<5;i++){
-        let playerSelection = prompt('Enter your choice : ','rock');
-        let computerSelection = computerPlay();
-        console.log(`Your choice is ${playerSelection} and the computer choice is ${computerSelection} so : \n`)
-        console.log(playRound(playerSelection, computerSelection));
-    }    
+let playerScore = 0;
+let computerScore = 0;
+let count = 0;
+const rock = document.getElementById('rock');
+const paper = document.getElementById('paper');
+const scissors = document.getElementById('scissors');
+function game(){
+    if(rock)
+{
+    rock.addEventListener('click',() => {
+        if(playRound('rock',computerPlay())=='c')
+            computerScore++;
+        else if(playRound('rock',computerPlay())=='p')
+            playerScore++;
+    count++;
+    inTextPlayer.textContent = `The player score is ${playerScore}`;
+    inTextComputer.textContent = `The computer score is ${computerScore}`;
+    if(count===5)
+    {
+        if(playerScore>computerScore)
+            finalReslut.textContent = `The winner is the player`;
+        else
+            finalReslut.textContent = `The winner is the computer`;
+        playerScore=0;
+        computerScore=0;
+    }
+});
 }
-game();
+if(paper)
+{
+    paper.addEventListener('click',() => {
+        if(playRound('paper',computerPlay())=='c')
+            computerScore++;
+        else if(playRound('paper',computerPlay())=='p')
+            playerScore++;
+    count++;
+    inTextPlayer.textContent = `The player score is ${playerScore}`;
+    inTextComputer.textContent = `The computer score is ${computerScore}`;
+    if(count===5)
+    {
+        if(playerScore>computerScore)
+            finalReslut.textContent = `The winner is the player`;
+        else
+            finalReslut.textContent = `The winner is the computer`;
+        playerScore=0;
+        computerScore=0;
+    }
+});
+}
+if(scissors)
+{
+    scissors.addEventListener('click',() => {
+        if(playRound('scissors',computerPlay())=='c')
+            computerScore++;
+        else if(playRound('scissors',computerPlay())=='p')
+            playerScore++;
+    count++;
+    inTextPlayer.textContent = `The player score is ${playerScore}`;
+    inTextComputer.textContent = `The computer score is ${computerScore}`;
+    if(count===5)
+    {
+        if(playerScore>computerScore)
+            finalReslut.textContent = `The winner is the player`;
+        else
+            finalReslut.textContent = `The winner is the computer`;
+        playerScore=0;
+        computerScore=0;
+    }
+});
+}
+}game();
+let inTextPlayer = document.createElement('p');
+const divPlayer = document.getElementById('player');
+divPlayer.appendChild(inTextPlayer);
+let inTextComputer = document.createElement('p');
+const divComputer = document.getElementById('computer');
+divComputer.appendChild(inTextComputer);
+
+const divFinal = document.getElementById('final');
+let finalReslut = document.createElement('p');
+divFinal.appendChild(finalReslut);
