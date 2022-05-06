@@ -36,10 +36,20 @@ button {
     border-radius: 20px;
     color: rgb(19, 122, 163);
 }
+.choice{
+    color: white;
+    font-size: 30px;
+    margin: auto;
+}
 .reslut{
     display: flex;
     color: white;
     justify-content: center;
     gap: 100px;
     font-size: 40px;
+}
+.rounds {
+    color: white;
+    font-size: 40px;
+    margin: 20px auto;
 }
